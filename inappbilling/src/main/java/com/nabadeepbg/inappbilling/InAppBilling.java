@@ -119,7 +119,7 @@ public class InAppBilling{
             public void onBillingSetupFinished(@NonNull BillingResult billingResult) {
                 if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
 
-                    billingClient.queryPurchasesAsync(QueryPurchasesParams.newBuilder().setProductType(BillingClient.ProductType.INAPP).build(),
+                    billingClient.queryPurchasesAsync(QueryPurchasesParams.newBuilder().setProductType(BillingClient.ProductType.SUBS).build(),
                             (result, purchases) -> {
                                 Log.i(TAG, "queryPurchasesAsync : result");
                                 handlePurchases(purchases);
@@ -178,7 +178,7 @@ public class InAppBilling{
                 QueryProductDetailsParams.newBuilder()
                         .setProductList(ImmutableList.of(QueryProductDetailsParams.Product.newBuilder()
                                 .setProductId(productId)
-                                .setProductType(BillingClient.ProductType.INAPP)
+                                .setProductType(BillingClient.ProductType.SUBS)
                                 .build())).build();
 
         billingClient.queryProductDetailsAsync(queryProductDetailsParams, productDetailsResponseListener);
